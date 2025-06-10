@@ -1,16 +1,2 @@
 # Topics to record for robot data collection
 topics:
-  - /camera/camera/color/camera_info
-  - /camera/camera/color/image_raw
-
-  - /livox/lidar
-  - /livox/lidar_inverted
-  - /livox/imu
-  - /livox/imu_inverted
-  
-  - /odom
-  - /cmd_vel_joy
-  
-  - /tf
-  - /tf_static
-  - /joint_states

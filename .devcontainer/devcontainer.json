@@ -1,13 +1,13 @@
 {
     "name": "MecaBot Development Container",
     "privileged": true,
-    "remoteUser": "wheelchair2",
-    "containerUser": "wheelchair2",
+    "remoteUser": "container_user",
+    "containerUser": "container_user",
     "build": {
         "dockerfile": "Dockerfile"
     },
-    "workspaceMount": "source=${localWorkspaceFolder},target=/home/wheelchair2/ros2_ws/src,type=bind",
-    "workspaceFolder": "/home/wheelchair2/ros2_ws/src",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/container_user/ros2_ws/src,type=bind",
+    "workspaceFolder": "/home/container_user/ros2_ws/src",
     "customizations": {
         "vscode": {
             "settings": {
@@ -18,21 +18,21 @@
                     "commands": [
                         {
                             "name": "Build WS",
-                            "cwd": "/home/wheelchair2/ros2_ws",
+                            "cwd": "/home/container_user/ros2_ws",
                             "color": "green",
                             "singleInstance": true,
-                            "command": "colcon build --symlink-install --packages-up-to robot_bringup" // This is executed in the terminal.
+                            "command": "colcon build --symlink-install" // This is executed in the terminal.
                         },
                         {
                             "name": "$(testing-run-all-icon) Test WS",
-                            "cwd": "/ros2_ws",
+                            "cwd": "/home/container_user/ros2_ws",
                             "color": "orange",
                             "singleInstance": true,
                             "command": "colcon test --event-handlers console_direct+"
                         },
                         {
                             "name": "$(extensions-install-count) Import Libs",
-                            "cwd": "/ros2_ws",
+                            "cwd": "/home/container_user/ros2_ws",
                             "color": "aqua",
                             "singleInstance": true,
                             "command": "rm -rf /ros2_ws/src/dep_repos && mkdir -p /ros2_ws/src/dep_repos && vcs import /ros2_ws/src/dep_repos < /ros2_ws/src/dep.repos"
@@ -64,7 +64,7 @@
 		"XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
 		"PULSE_SERVER": "${localEnv:PULSE_SERVER}",
         "QT_X11_NO_MITSHM": "1",
-		"LIBGL_ALWAYS_SOFTWARE": "1" , // Needed for software rendering of opengl
+		"LIBGL_ALWAYS_SOFTWARE": "1"  // Needed for software rendering of opengl
         // "NVIDIA_DRIVER_CAPABILITIES": "all",
         // "NVIDIA_VISIBLE_DEVICES": "all"
     },
@@ -84,5 +84,5 @@
         "--name=hepobot_development",
         // "--gpus=all",
     ],
-    "postStartCommand": "sudo chown -R wheelchair2 /home/wheelchair2/ros2_ws /run"
+    "postStartCommand": "sudo chown -R container_user /home/container_user/ros2_ws /run"
 }

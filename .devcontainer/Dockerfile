@@ -1,4 +1,4 @@
-FROM ghcr.io/smart-wheelchair-rrc/humble_harmonic:v3.0
+FROM ghcr.io/soham2560/humble-harmonic:latest
 
 # Add the following labels
 LABEL org.opencontainers.image.description="ROS2 Humble + ROS2 Harmonic + ROS2 Control"
@@ -46,12 +46,12 @@ RUN sudo apt-get update \
     && sudo apt-get -y install --no-install-recommends $(cat /tmp/rosPkgs.list) \
     && sudo rm -rf /var/lib/apt/lists/*
 
-WORKDIR /home/wheelchair2/gz_ros2_control_ws/src
+WORKDIR /home/container_user/gz_ros2_control_ws/src
 RUN git clone https://github.com/ros-controls/gz_ros2_control -b humble . \
     && export GZ_VERSION=harmonic \
     && rosdep install -r --from-paths . --ignore-src --rosdistro $ROS_DISTRO -y --skip-keys="ros_gz_bridge ros_gz_sim" 
 
-WORKDIR /home/wheelchair2/gz_ros2_control_ws
+WORKDIR /home/container_user/gz_ros2_control_ws
 RUN source /opt/ros/humble/setup.bash \
     && colcon build \
     && echo "source ~/gz_ros2_control_ws/install/setup.bash" | sudo tee -a ~/.bashrc > /dev/null  

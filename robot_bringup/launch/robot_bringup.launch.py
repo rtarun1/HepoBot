@@ -38,11 +38,23 @@ def generate_launch_description():
             description='Use RViz'
         )
     )
+    launch_arguments.append(
+        DeclareLaunchArgument(
+            'record',
+            default_value='False',
+            description='Record in rosbag'
+        )
+    )
     
     use_sim_time = LaunchConfiguration("use_sim_time")
     use_rviz = LaunchConfiguration('use_rviz')
+    record = LaunchConfiguration("record")
 
-    joy_params = os.path.join(get_package_share_directory('robot_bringup'),'config','joystick.yaml')
+    # set log output path
+    get_current_timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+    log_full_path = os.path.join('/home/container_user/ros2_ws/src/records/', get_current_timestamp)
+    rosbag_full_path = os.path.join(log_full_path, 'rosbag')
+    package_path = get_package_share_directory('robot_bringup')
 
     # ROBOT DESCRIPTION
     robot_description = {
@@ -215,6 +227,23 @@ def generate_launch_description():
         remappings=[("scan", "/scan_raw"), ("scan_filtered", "/scan")],
         condition=UnlessCondition(use_sim_time),
     )
+
+    rosbag_recorder_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            [package_path, '/launch/rosbag_recorder.launch.py']
+        ),
+        launch_arguments={
+            'use_sim_time': use_sim_time,
+            'rosbag_storage_dir': rosbag_full_path,
+        }.items(),
+        condition=IfCondition(record),
+    )
+
+    rosbag_with_delay = TimerAction(
+        period=10.0, 
+        actions=[rosbag_recorder_launch],
+        condition=IfCondition(record),
+    )
     
     
     nodes = [
@@ -229,6 +258,7 @@ def generate_launch_description():
             spawn_entity,
             ros_gz_bridge,
             rviz_node,
+            rosbag_with_delay,
     ]
     
     return LaunchDescription(launch_arguments + nodes)
