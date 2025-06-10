@@ -1,4 +1,4 @@
-# Topics to record for wheelchair data collection
+# Topics to record for robot data collection
 topics:
   - /camera/camera/color/camera_info
   - /camera/camera/color/image_raw

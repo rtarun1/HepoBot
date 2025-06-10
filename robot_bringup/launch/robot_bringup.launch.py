@@ -150,24 +150,6 @@ def generate_launch_description():
         output="screen",
     )
 
-    ########################################################################################################
-
-    joy_node = Node(
-            package='joy',
-            executable='joy_node',
-            parameters=[joy_params, {'use_sim_time': use_sim_time}],
-         )
-
-    teleop_node = Node(
-            package='teleop_twist_joy',
-            executable='teleop_node',
-            name='teleop_node',
-            parameters=[joy_params, {'use_sim_time': use_sim_time}],
-            remappings=[('/cmd_vel','/robot_base_controller/cmd_vel_unstamped')]
-         )
-
-    ########################################################################################################    
-
     bridge_params = os.path.join(get_package_share_directory('robot_bringup'), 'config', 'gz_bridge.yaml')
     ros_gz_bridge = Node(
         package="ros_gz_bridge",
@@ -238,8 +220,6 @@ def generate_launch_description():
     nodes = [
             robot_state_publisher,
             ros2_control,
-            joy_node,
-            teleop_node,
             delay_joint_state_broadcaster_spawner,
             delay_robot_controller_spawner,
             sllidar_launch,

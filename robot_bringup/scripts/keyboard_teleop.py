@@ -9,7 +9,7 @@ else:
     import tty, termios
 
 msg = """
-Control Your Wheelchair!
+Control Your Robot!
 ---------------------------
 Moving around:
         w
