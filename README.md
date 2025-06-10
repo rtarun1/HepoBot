@@ -7,7 +7,6 @@ ROS2 Setup for HepoBot at RRC, IIIT-H
   - [Table of contents](#table-of-contents)
   - [Development Setup](#development-setup)
     - [Action Buttons](#action-buttons)
-  - [Hardware Setup](#hardware-setup)
   - [How to Use](#how-to-use)
 
 
@@ -31,6 +30,14 @@ ROS2 Setup for HepoBot at RRC, IIIT-H
     ```
 
 ## How to Use
+
+- **Clone the repo with submodules**
+    ```bash
+    git clone https://github.com/rtarun1/HepoBot.git --recurse-submodules
+    cd HepoBot
+    # Open VSCode 
+    code .
+    ```
 - **Build and Source the workspace**
 
   It is suggested to use the [Action Buttons](#action-buttons) to build, but if you're unable due to some reason, you can use the commands below
@@ -43,9 +50,9 @@ ROS2 Setup for HepoBot at RRC, IIIT-H
     ```
     sudo chmod +777 /dev/ttyACM0 #For Motor Driver
     sudo chmod +777 /dev/ttyUSB0 #For LiDAR
-
-> [!NOTE] 
-> If `/dev/ttyUSB0` is not visible, run `sudo apt remove brltty` locally.
+    ```
+  > [!NOTE] 
+  > If `/dev/ttyUSB0` is not visible, run `sudo apt remove brltty` locally.
 - **Launch**
 
   ```bash
