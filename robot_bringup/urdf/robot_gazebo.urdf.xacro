@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<robot name="robot"
+    xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo reference="chassis">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+
+    <gazebo reference="caster1">
+        <material>Gazebo/White</material>
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+        <fdir1>0 0 0</fdir1>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>1.0</maxVel>
+    </gazebo>
+
+    <gazebo reference="caster2">
+        <material>Gazebo/White</material>
+        <mu1>0.0</mu1>
+        <mu2>0.0</mu2>
+        <kp>1000000.0</kp>
+        <kd>100.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>1.0</maxVel>
+    </gazebo>
+
+    <gazebo reference="rod1">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="rod2">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="camera_base_rod">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+
+    <gazebo reference="lidar_base_rod">
+        <material>Gazebo/Grey</material>
+    </gazebo>
+</robot>

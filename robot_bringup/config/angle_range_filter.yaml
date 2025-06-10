@@ -1,0 +1,27 @@
+scan_to_scan_filter_chain:
+  ros__parameters:
+    filter1:
+        name: footprint_filter
+        type: laser_filters/LaserScanFootprintFilter
+        params:
+          inscribed_radius: 0.6
+    # filter0:
+    #   name: box
+    #   type: laser_filters/LaserScanBoxFilter
+    #   params:
+    #     box_frame: laser
+    #     min_x: -100
+    #     max_x: 100
+    #     min_y: -100
+    #     max_y: 100
+    #     min_z: -100
+    #     max_z: 100
+    #     invert: false
+    # filter1:
+    #   name: angle
+    #   type: laser_filters/LaserScanAngularBoundsFilter
+    #   params:
+    #     lower_angle: -2.3
+    #     upper_angle: 2.3
+    #     preserve_header_stamp: true
+    #     increment: 0.0
