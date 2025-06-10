@@ -10,7 +10,7 @@
 #include <stdint.h>
 #include <iostream>
 
-#include "wheelchair2_kangaroo_x2_driver/kangaroo_library.hpp"
+#include "robot_kangaroo_x2_driver/kangaroo_library.hpp"
 
 size_t bitpack_number(unsigned char *buffer, int number);
 int un_bitpack_number(unsigned char *data, size_t num_of_bytes);

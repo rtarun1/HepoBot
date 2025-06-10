@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(wheelchair2_kangaroo_x2_driver)
+project(robot_kangaroo_x2_driver)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -21,29 +21,29 @@ foreach(Dependency IN ITEMS ${THIS_PACKAGE_INCLUDE_DEPENDS})
 endforeach()
 
 add_library(
-  wheelchair2_kangaroo_x2_driver
+  robot_kangaroo_x2_driver
   SHARED
   src/kangaroo.cpp
   src/kangaroo_library.cpp
 )
-target_compile_features(wheelchair2_kangaroo_x2_driver PUBLIC cxx_std_17)
-target_include_directories(wheelchair2_kangaroo_x2_driver PUBLIC
+target_compile_features(robot_kangaroo_x2_driver PUBLIC cxx_std_17)
+target_include_directories(robot_kangaroo_x2_driver PUBLIC
 $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-$<INSTALL_INTERFACE:include/wheelchair2_kangaroo_x2_driver>
+$<INSTALL_INTERFACE:include/robot_kangaroo_x2_driver>
 )
 ament_target_dependencies(
-  wheelchair2_kangaroo_x2_driver PUBLIC
+  robot_kangaroo_x2_driver PUBLIC
   ${THIS_PACKAGE_INCLUDE_DEPENDS}
 )
 
-pluginlib_export_plugin_description_file(hardware_interface wheelchair2_kangaroo_x2_driver.xml)
+pluginlib_export_plugin_description_file(hardware_interface robot_kangaroo_x2_driver.xml)
 
 install(
   DIRECTORY include/
-  DESTINATION include/wheelchair2_kangaroo_x2_driver
+  DESTINATION include/robot_kangaroo_x2_driver
 )
-install(TARGETS wheelchair2_kangaroo_x2_driver
-  EXPORT export_wheelchair2_kangaroo_x2_driver
+install(TARGETS robot_kangaroo_x2_driver
+  EXPORT export_robot_kangaroo_x2_driver
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
@@ -61,6 +61,6 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-ament_export_targets(export_wheelchair2_kangaroo_x2_driver HAS_LIBRARY_TARGET)
+ament_export_targets(export_robot_kangaroo_x2_driver HAS_LIBRARY_TARGET)
 ament_export_dependencies(${THIS_PACKAGE_INCLUDE_DEPENDS})
 ament_package()

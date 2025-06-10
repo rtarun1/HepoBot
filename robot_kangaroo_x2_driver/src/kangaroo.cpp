@@ -1,5 +1,5 @@
-#include "wheelchair2_kangaroo_x2_driver/kangaroo.hpp"
-#include "wheelchair2_kangaroo_x2_driver/kangaroo_library.hpp"
+#include "robot_kangaroo_x2_driver/kangaroo.hpp"
+#include "robot_kangaroo_x2_driver/kangaroo_library.hpp"
 
 #include <chrono>
 #include <cmath>
@@ -16,7 +16,7 @@
 #define RAD_2_DEG 180.0 / 3.14159265359
 #define DEG_2_RAD 3.14159265359 / 180.0
 
-namespace wheelchair2_kangaroo_x2_driver
+namespace robot_kangaroo_x2_driver
 {
     /* ---------------------------------------- */
     /* --------- KANGAROO IO FUNCTIONS -------- */
@@ -581,4 +581,4 @@ namespace wheelchair2_kangaroo_x2_driver
 
 #include "pluginlib/class_list_macros.hpp"
 PLUGINLIB_EXPORT_CLASS(
-  wheelchair2_kangaroo_x2_driver::Kangaroo, hardware_interface::SystemInterface)
+  robot_kangaroo_x2_driver::Kangaroo, hardware_interface::SystemInterface)

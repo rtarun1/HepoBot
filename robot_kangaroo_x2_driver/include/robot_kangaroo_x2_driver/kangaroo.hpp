@@ -1,5 +1,5 @@
-#ifndef WHEELCHAIR2_KANGAROO_X2_DRIVER__KANGAROO_HPP_
-#define WHEELCHAIR2_KANGAROO_X2_DRIVER__KANGAROO_HPP_
+#ifndef ROBOT_KANGAROO_X2_DRIVER__KANGAROO_HPP_
+#define ROBOT_KANGAROO_X2_DRIVER__KANGAROO_HPP_
 
 #include <memory>
 #include <string>
@@ -17,7 +17,7 @@
 #include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
 #include "rclcpp_lifecycle/state.hpp"
 
-namespace wheelchair2_kangaroo_x2_driver
+namespace robot_kangaroo_x2_driver
 {
     class Kangaroo : public hardware_interface::SystemInterface
     {
@@ -94,6 +94,6 @@ namespace wheelchair2_kangaroo_x2_driver
         Wheel left_wheel_;
         Wheel right_wheel_;
     };
-} // namespace wheelchair2_kangaroo_x2_driver
+} // namespace robot_kangaroo_x2_driver
 
-#endif // WHEELCHAIR2_KANGAROO_X2_DRIVER__KANGAROO_HPP_
+#endif // ROBOT_KANGAROO_X2_DRIVER__KANGAROO_HPP_

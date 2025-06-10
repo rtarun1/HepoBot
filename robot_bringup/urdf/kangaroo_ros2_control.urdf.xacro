@@ -8,7 +8,7 @@
 					<plugin>gz_ros2_control/GazeboSimSystem</plugin>
 				</xacro:if>
 				<xacro:unless value="${use_sim_time}">
-					<plugin>wheelchair2_kangaroo_x2_driver/Kangaroo</plugin>
+					<plugin>robot_kangaroo_x2_driver/Kangaroo</plugin>
 					<!-- <plugin>mock_components/GenericSystem</plugin> -->
 					<param name="left_wheel_name">base_link_to_left_wheel</param>
 					<param name="right_wheel_name">base_link_to_right_wheel</param>
