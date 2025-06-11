@@ -15,8 +15,6 @@ ROS2 Setup for HepoBot at RRC, IIIT-H
     ```bash
     docker pull ghcr.io/soham2560/humble-harmonic:latest
     ```
-> [!NOTE]
-> Change the ROS_DOMAIN_ID to a random number between 1 to 100 inside the devcontainer.json file
 - To start container
     - Open Command Pallete with `Ctrl+Shift+P`
     - Select Option to Rebuild and Reopen Container
@@ -40,6 +38,8 @@ ROS2 Setup for HepoBot at RRC, IIIT-H
     # Open VSCode 
     code .
     ```
+> [!NOTE]
+> Change the ROS_DOMAIN_ID to a random number between 1 to 100 inside the devcontainer.json file.
 - **Build and Source the workspace**
 
   It is suggested to use the [Action Buttons](#action-buttons) to build, but if you're unable due to some reason, you can use the commands below
