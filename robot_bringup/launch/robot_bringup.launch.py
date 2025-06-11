@@ -193,6 +193,21 @@ def generate_launch_description():
                     on_exit=[robot_controller_spawner],
                 )
             )
+    joy_params = os.path.join(get_package_share_directory('robot_bringup'),'config','joystick.yaml')
+    joy_node = Node(
+            package='joy',
+            executable='joy_node',
+            parameters=[joy_params, {'use_sim_time': use_sim_time}],
+         )
+
+    teleop_node = Node(
+            package='teleop_twist_joy',
+            executable='teleop_node',
+            name='teleop_node',
+            parameters=[joy_params, {'use_sim_time': use_sim_time}],
+            # remappings=[('/cmd_vel','/cmd_vel_joy')]
+         )
+    
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
