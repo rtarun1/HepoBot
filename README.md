@@ -66,6 +66,11 @@ ROS2 Setup for HepoBot at RRC, IIIT-H
   | `record`      | `False`      | Enable recording to a rosbag.                  |
   | `use_rviz`    | `False`      | Launch RViz on startup.                        |
 
+- **Interact**
 
+  To interact with the drive, you can use the `teleop_twist_keyboard` node by launching it as follows
+  ```bash
+  ros2 run robot_bringup keyboard_teleop.py
+  ```
 
 Note: The README's in this repository are inspired by [this](https://github.com/TheProjectsGuy/MR21-CS7.503)
