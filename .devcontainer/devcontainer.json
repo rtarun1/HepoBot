@@ -64,9 +64,10 @@
 		"XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
 		"PULSE_SERVER": "${localEnv:PULSE_SERVER}",
         "QT_X11_NO_MITSHM": "1",
-		"LIBGL_ALWAYS_SOFTWARE": "1"  // Needed for software rendering of opengl
+		"LIBGL_ALWAYS_SOFTWARE": "1", // Needed for software rendering of opengl
         // "NVIDIA_DRIVER_CAPABILITIES": "all",
         // "NVIDIA_VISIBLE_DEVICES": "all"
+        "ROS_DOMAIN_ID": "69"
     },
     "runArgs": [
         // RealTime
