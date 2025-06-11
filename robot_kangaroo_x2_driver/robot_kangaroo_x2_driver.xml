@@ -1,0 +1,9 @@
+<library path="robot_kangaroo_x2_driver">
+  <class name="robot_kangaroo_x2_driver/Kangaroo"
+         type="robot_kangaroo_x2_driver::Kangaroo"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Hardware Interface for Kangaroo X2 controller.
+    </description>
+  </class>
+</library>
