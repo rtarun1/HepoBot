@@ -1,5 +1,5 @@
 {
-    "name": "MecaBot Development Container",
+    "name": "HepoBot Development Container",
     "privileged": true,
     "remoteUser": "container_user",
     "containerUser": "container_user",
