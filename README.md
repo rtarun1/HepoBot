@@ -11,7 +11,7 @@ ROS2 Humble and Gazebo Harmonic Setup for HepoBot at RRC, IIIT (Summer School 20
     code .
     ```
 > [!NOTE]
-> Change the ROS_DOMAIN_ID to a random number between 1 to 100 inside the devcontainer.json file.
+> Change the ROS_DOMAIN_ID to a random number between 0 to 101 inside the devcontainer.json file.
 - **Build and Source the workspace**
 
 - **To enter the container**
@@ -30,8 +30,8 @@ ROS2 Humble and Gazebo Harmonic Setup for HepoBot at RRC, IIIT (Summer School 20
     sudo chmod +777 /dev/ttyACM0 #For Motor Driver
     sudo chmod +777 /dev/ttyUSB0 #For LiDAR
     ```
-  > [!NOTE] 
-  > If `/dev/ttyUSB0` is not visible, run `sudo apt remove brltty` locally.
+> [!NOTE] 
+> If `/dev/ttyUSB0` is not visible, run `sudo apt remove brltty` locally.
 - **Robot Launch**
 
   ```bash
