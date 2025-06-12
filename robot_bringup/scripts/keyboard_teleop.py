@@ -26,7 +26,7 @@ CTRL-C to quit
 class KeyboardTeleop(Node):
     def __init__(self):
         super().__init__('keyboard_teleop')
-        self.publisher = self.create_publisher(Twist, 'cmd_vel', 10)
+        self.publisher = self.create_publisher(Twist, '/robot_base_controller/cmd_vel_unstamped', 10)
         print(msg)
 
     def get_key(self):

@@ -17,6 +17,7 @@ install(
   meshes
   worlds
   rviz
+  maps
   DESTINATION share/${PROJECT_NAME}
 )
 

@@ -106,7 +106,7 @@ def generate_launch_description():
         ],
         output="screen",
         remappings=[
-            # ("/robot_base_controller/cmd_vel_unstamped", "/cmd_vel"),
+            # ("/cmd_vel", "/robot_base_controller/cmd_vel_unstamped"),
             ("/robot_base_controller/odom", "/odom"),
         ],
         condition=UnlessCondition(use_sim_time),
@@ -115,7 +115,7 @@ def generate_launch_description():
     default_world = os.path.join(
         get_package_share_directory('robot_bringup'),
         'worlds',
-        'empty.world'
+        'obstacles.world'
         )    
     
     world = LaunchConfiguration('world')
@@ -208,6 +208,14 @@ def generate_launch_description():
             # remappings=[('/cmd_vel','/cmd_vel_joy')]
          )
     
+    twist_mux_params = os.path.join(get_package_share_directory('robot_bringup'),'config','twist_mux.yaml')
+    twist_mux = Node(
+        package="twist_mux",
+        executable="twist_mux",
+        parameters=[twist_mux_params],
+        remappings=[('/cmd_vel_out','/robot_base_controller/cmd_vel_unstamped')],
+    )
+    
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
@@ -242,7 +250,7 @@ def generate_launch_description():
             )
         ],
         remappings=[("scan", "/scan_raw"), ("scan_filtered", "/scan")],
-        condition=UnlessCondition(use_sim_time),
+        # condition=UnlessCondition(use_sim_time),
     )
 
     rosbag_recorder_launch = IncludeLaunchDescription(
@@ -274,6 +282,9 @@ def generate_launch_description():
             gazebo,
             spawn_entity,
             ros_gz_bridge,
+            joy_node,
+            teleop_node,
+            twist_mux,
             rviz_node,
             rosbag_with_delay,
     ]
