@@ -12,13 +12,20 @@ on:
 jobs:
   main-build:
     name: ROS2 Humble Base Images (AMD64)
-    uses: ./.github/workflows/build-workflow.yaml
-    with:
-      build_context: .devcontainer
-      image_name: hepobot_base
-      image_version: latest
-      runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
       pull-requests: write
+    steps:
+      - name: Set image version
+        id: set_version
+        run: |
+          echo "image_version=${{ github.ref_name }}" >> $GITHUB_OUTPUT
+      - name: Build and push Docker image  
+        uses: ./.github/workflows/build-workflow.yaml
+        with:
+          build_context: .devcontainer
+          image_name: hepobot_base
+          image_version: ${{ steps.set_version.outputs.image_version }}
+          runs_on: ubuntu-latest
