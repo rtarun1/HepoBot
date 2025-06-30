@@ -13,12 +13,15 @@ jobs:
   get_tags:
     name: ROS2 Humble Base Images (AMD64)
     runs-on: ubuntu-latest
+    outputs:
+      image_version: ${{ steps.image_name.outputs.image_version }}
     permissions:
       packages: write
       contents: read
       pull-requests: write
     steps:
       - name: Set up GitHub Actions environment
+        id: image_name
         run: |
           echo "image_version=${{ github.ref_name }}" >> $GITHUB_OUTPUT
   main_build:
