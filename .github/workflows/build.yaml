@@ -18,3 +18,7 @@ jobs:
       image_name: hepobot_base
       image_version: latest
       runs_on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+      pull-requests: write
