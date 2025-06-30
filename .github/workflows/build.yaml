@@ -10,7 +10,7 @@ on:
   #   branches: [ main, master ]
 
 jobs:
-  main-build:
+  get_tags:
     name: ROS2 Humble Base Images (AMD64)
     runs-on: ubuntu-latest
     permissions:
@@ -18,14 +18,15 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: Set image version
-        id: set_version
+      - name: Set up GitHub Actions environment
         run: |
           echo "image_version=${{ github.ref_name }}" >> $GITHUB_OUTPUT
-      - name: Build and push Docker image  
-        uses: ./.github/workflows/build-workflow.yaml
-        with:
-          build_context: .devcontainer
-          image_name: hepobot_base
-          image_version: ${{ steps.set_version.outputs.image_version }}
-          runs_on: ubuntu-latest
+  main_build:
+    needs: get_tags
+    name: Build and push Docker image  
+    uses: ./.github/workflows/build-workflow.yaml
+    with:
+      build_context: .devcontainer
+      image_name: hepobot_base
+      image_version: ${{ needs.get_tags.outputs.image_version }}
+      runs_on: ubuntu-latest
