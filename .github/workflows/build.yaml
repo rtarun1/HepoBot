@@ -25,6 +25,10 @@ jobs:
     needs: get_tags
     name: Build and push Docker image  
     uses: ./.github/workflows/build-workflow.yaml
+    permissions:
+      packages: write
+      contents: read
+      pull-requests: write
     with:
       build_context: .devcontainer
       image_name: hepobot_base
